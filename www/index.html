@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="components/loader.js"></script>
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/memo.js"></script>
+    <script src="js/app.js"></script>
+</head>
+<body>
+    <ons-navigator var="myNavigator" page="list.html">
+    </ons-navigator> 
+    
+    <!-- リストの画面 -->
+    <ons-template id="list.html">
+      <ons-page id="ListPage">
+        <ons-toolbar>
+            <div class="left"><ons-button onclick="onLogOut();" modifier="quiet"><ons-icon icon="fa-sign-out"></ons-icon></ons-button></div>
+            <div class="center"><span id="toolbarUserName"></span>のメモ帳</div>
+            <div class="right"><ons-button onclick="onAdd();" modifier="quiet"><ons-icon icon="fa-plus-circle"></ons-icon></ons-button></div>
+        </ons-toolbar>
+    
+        <ons-list id="MemoList">
+        </ons-list>
+      </ons-page>
+    </ons-template>
+    
+    <!-- メモ追加用ダイアログ -->
+    <ons-dialog var="addDialog" id="AddDialog">
+      <div style="text-align: center;height: 150px;">
+        <br>
+        <input class="text-input" type="text" id="tfMemo" placeholder="メモ" />
+        <br>
+        <br>
+        <ons-button id="addBtn" onclick="onAddMemo();">追加</ons-button>
+        <ons-button id="cancelBtn" onclick="onCancel();" modifier="outline">キャンセル</ons-button>
+        <br>
+      </div>
+    </ons-dialog>
+
+    <!-- 認証用ダイアログ -->
+    <ons-dialog var="authDialog" id="AuthDialog">
+      <div style="text-align: center;height: 200px;">
+          <br>
+          <span>会員認証が必要です</span>
+          <br>
+          <br>
+          <input class="text-input" type="text" id="tfUserName" placeholder="ユーザー名(4文字以上)" />
+          <br>
+          <input class="text-input" type="password" id="tfPassword" placeholder="パスワード(4文字以上)" />
+          <br>
+          <br>
+          <ons-button id="loginBtn" onclick="onLogIn();">ログイン</ons-button>
+          <ons-button id="signupBtn" onclick="onSignUp();" modifier="outline">会員登録</ons-button>
+          <br>
+          <br>
+      </div>
+    </ons-dialog>
+
+    <!-- 通信中ダイアログ -->
+    <ons-dialog var="loadingDialog" id="LoadingDialog">
+      <div class="page" style="height: 140px;">
+        <p style="text-align: center; margin-top: 54px; color: gray;">通信中です...</p>
+      </div>
+    </ons-dialog>
+
+</body>
+</html>
